@@ -1,4 +1,5 @@
 # Django settings for private_groups project.
+import os
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -12,10 +13,11 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'laphroaig$pg',                      # Or path to database file if using sqlite3.
-        'USER': 'laphroaig',                      # Not used with sqlite3.
-        'PASSWORD': 'pg',                  # Not used with sqlite3.
-        'HOST': 'mysql.server',                      # Set to empty string for localhost. Not used with sqlite3.
+        'NAME': 'migashko_pg',                      # Or path to database file if using sqlite3.
+        'USER': '045686684_pg',                      # Not used with sqlite3.
+        'PASSWORD': 'pgpg',                  # Not used with sqlite3.
+#        'HOST': 'mysql.server',                      # Set to empty string for localhost. Not used with sqlite3.
+        'HOST': '127.0.0.1',
         'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
     }
 }
@@ -49,7 +51,8 @@ USE_L10N = True
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
-MEDIA_ROOT = '/home/laphroaig/private_groups/media'
+#MEDIA_ROOT = '/home/laphroaig/private_groups/media'
+MEDIA_ROOT = os.path.join(os.path.expanduser('~'), 'domains/migashko.myjino.ru/media/')
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
@@ -60,7 +63,11 @@ MEDIA_URL = '/media/'
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/home/media/media.lawrence.com/static/"
-STATIC_ROOT = '/home/laphroaig/private_groups/static'
+
+STATIC_ROOT = os.path.join(os.path.expanduser('~'), 'domains/migashko.myjino.ru/static/')
+#STATIC_ROOT = os.path.join(os.path.expanduser('~'), 'MyEnv/lib/python2.7/site-packages/django/contrib/admin/static/')
+
+#STATIC_ROOT = '/home/laphroaig/private_groups/static'
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
@@ -70,9 +77,14 @@ STATIC_URL = '/static/'
 # Make sure to use a trailing slash.
 # Examples: "http://foo.com/static/admin/", "/static/admin/".
 ADMIN_MEDIA_PREFIX = '/static/admin/'
+#ls -	ADMIN_MEDIA_PREFIX = os.path.join(os.path.expanduser('~'), 'MyEnv/lib/python2.7/site-packages/django/contrib/admin/media/')
 
 # Additional locations of static files
 STATICFILES_DIRS = (
+  os.path.join(os.path.expanduser('~'), 'MyEnv/lib/python2.7/site-packages/django/contrib/admin/static'),
+  '/usr/local/lib/python2.7/site-packages/django/contrib/admin/static/',
+
+
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -104,14 +116,17 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
 )
 
-ROOT_URLCONF = 'private_groups.urls'
+#ROOT_URLCONF = 'private_groups.urls'
+ROOT_URLCONF = 'urls'
 
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    "/home/laphroaig/private_groups/templates/",
-    "/home/laphroaig/private_groups/pools/templates/",
+    #"/home/laphroaig/private_groups/templates/",
+    #"/home/laphroaig/private_groups/pools/templates/",
+    os.path.join(os.path.expanduser('~'), 'django/private_groups/templates/admin'),
+    os.path.join(os.path.expanduser('~'), 'django/private_groups/polls/templates/polls')
 )
 
 INSTALLED_APPS = (
